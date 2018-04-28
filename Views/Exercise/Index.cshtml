@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Exercise>
+
+<main>
+    <div>
+
+        @Html.ActionLink("Add a new Exercise", "Create", "Exercise", null, new { @class = "btn btn-primary" })
+
+        @if (!Model.Any())
+        {
+            <h2>No exercises found!</h2>
+        }
+        else
+        {
+            <table class="table table-hover table-responsive-md table-fixed">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => m.Title)</th>
+                        <th>@Html.DisplayNameFor(m => m.Intervals)</th>
+                        <th>@Html.DisplayNameFor(m => m.Reps)</th>
+                        <th>@Html.DisplayNameFor(m => m.Weight)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var exercise in Model)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(m => exercise.Title)</td>
+                        <td>@Html.DisplayFor(m => exercise.Intervals)</td>
+                        <td>@Html.DisplayFor(m => exercise.Reps)</td>
+                        <td>@Html.DisplayFor(m => exercise.Weight)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            }
+
+    </div>
+</main>
