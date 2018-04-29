@@ -28,6 +28,9 @@
                         <td>@Html.DisplayFor(m => exercise.Intervals)</td>
                         <td>@Html.DisplayFor(m => exercise.Reps)</td>
                         <td>@Html.DisplayFor(m => exercise.Weight)</td>
+                        <td>@Html.ActionLink("Details", "Details", "Exercise", new { id = exercise.Id }, new { style = "text-decoration: underline;" })</td>
+                        <td>@Html.ActionLink("Edit", "Edit", "Exercise", new { id = exercise.Id }, new { style = "text-decoration: underline;" })</td>
+                        <td>@Html.ActionLink("Delete", "Delete", "Exercise", new { id = exercise.Id }, new { style = "color: red; text-decoration: underline;" })</td>
                     </tr>
                     }
                 </tbody>

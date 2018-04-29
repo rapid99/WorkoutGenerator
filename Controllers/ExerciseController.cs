@@ -21,7 +21,9 @@ namespace WorkoutGenerator.Controllers
 
         public IActionResult Index()
         {
-            return View("Index", GetDatabase());
+            var exercises = GetDatabase();
+
+            return View("Index", exercises);
         }
 
         [HttpGet]
@@ -37,6 +39,95 @@ namespace WorkoutGenerator.Controllers
                 _database.GetCollection<Exercise>("Exercises").InsertOne(model);
 
             return RedirectToAction("Index", model);
+        }
+
+        [HttpGet]
+        public IActionResult Details(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var exercise_to_view = _database.GetCollection<Exercise>("Exercises").Find(i => i.Id == id).FirstOrDefault();
+
+            if (exercise_to_view == null)
+                return NotFound();
+
+            return View(exercise_to_view);
+
+        }
+
+        [HttpGet]
+        public IActionResult Edit(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var exercise_to_edit = _database.GetCollection<Exercise>("Exercises").Find(i => i.Id == id).FirstOrDefault();
+
+            if (exercise_to_edit == null)
+                return NotFound();
+
+            return View(exercise_to_edit);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Exercise model)
+        {
+            try
+            {
+                //Build where condition and update statement
+                var filter = Builders<Exercise>.Filter.Eq("Id", model.Id);
+
+                var updater = Builders<Exercise>.Update.Set("Title", model.Title);
+                updater = updater.Set("Intervals", model.Intervals);
+                updater = updater.Set("Reps", model.Reps);
+                updater = updater.Set("Weight", model.Weight);
+
+                var result = _database.GetCollection<Exercise>("Exercises").UpdateOne(filter, updater);
+
+                if (result.IsAcknowledged == false)
+                    return BadRequest("Unable to update the rating for " + model.Title);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var exercise_to_delete = _database.GetCollection<Exercise>("Exercises").Find(i => i.Id == id).FirstOrDefault();
+
+            if (exercise_to_delete == null)
+                return NotFound();
+
+            return View(exercise_to_delete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Exercise model)
+        {
+            try
+            {
+                var result = _database.GetCollection<Exercise>("Exercises").DeleteOne(i => i.Id == model.Id);
+
+                if (result.IsAcknowledged == false)
+                    return BadRequest("Unable to delete the rating for " + model.Title);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return RedirectToAction("Index");
         }
 
         public List<Exercise> GetDatabase()

@@ -1,0 +1,13 @@
+﻿@model Exercise
+
+<h2>Edit @Model.Title</h2>
+
+@using (Html.BeginForm("Edit", "Exercise"))
+{
+    @Html.Partial("_ExerciseForm")
+    <div class="text-center mt-4">
+        <button class="btn btn-warning" type="submit">Edit<i class="fa fa-paper-plane-o ml-2"></i></button>
+        @Html.ActionLink("Cancel", "Index", "Exercise", null, new { @class = "btn btn-danger" })
+    </div>
+}
+

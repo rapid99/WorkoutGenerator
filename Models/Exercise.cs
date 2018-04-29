@@ -16,8 +16,10 @@ namespace WorkoutGenerator.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Intervals can only be numbers")]
         public int Intervals { get; set; }
         [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Reps can only be numbers")]
         public int Reps { get; set; }
         [Required]
         public string Weight { get; set; }
