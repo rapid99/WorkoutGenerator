@@ -6,8 +6,16 @@
 {
     @Html.Partial("_ExerciseForm")
     <div class="text-center mt-4">
-        <button class="btn btn-warning" type="submit">Edit<i class="fa fa-paper-plane-o ml-2"></i></button>
+        <button class="btn btn-warning" type="submit" id="editBtn">Edit<i class="fa fa-paper-plane-o ml-2"></i></button>
         @Html.ActionLink("Cancel", "Index", "Exercise", null, new { @class = "btn btn-danger" })
     </div>
 }
 
+<script>
+    $('#editBtn').keypress(function (e) {
+        if (e.which == 13) {
+            $('#editBtn').focus().click();
+            return false;
+        }
+    });
+</script>

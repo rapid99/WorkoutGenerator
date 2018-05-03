@@ -1,0 +1,33 @@
+﻿@model Workout
+
+<hr />
+<h2>Now viewing workout <span style="font-weight:bold;">@Model.Id</span></h2>
+
+<table class="table table-hover table-responsive-md table-fixed">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Exercises)</th>
+            <th>@Html.DisplayNameFor(m => m.Times_Completed)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @foreach(var exercise in Model.Exercises)
+                {
+                    <span style="font-weight:bold; text-decoration:underline;">@Html.DisplayFor(e => exercise.Title)</span><br />
+                    <small>
+                        <strong>@Html.LabelFor(e => exercise.Reps)</strong> @Html.DisplayFor(e => exercise.Reps)<br />
+                        <strong>@Html.LabelFor(e => exercise.Sets)</strong> @Html.DisplayFor(e => exercise.Sets)<br />
+                        <strong>@Html.LabelFor(e => exercise.Weight)</strong> @Html.DisplayFor(e => exercise.Weight)<br />
+                    </small>
+                    <hr />
+                }
+            </td>
+            <td>@Html.DisplayFor(e => e.Times_Completed)</td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Back", "Index", "Workout", null, new { @class = "btn btn-secondary" })
+

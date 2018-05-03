@@ -1,32 +1,29 @@
 ﻿@model Exercise
 
-<!-- Material input text -->
+
 <div class="md-form">
-    <i class="fa fa-user prefix grey-text"></i>
+    <i class="fa fa-book prefix grey-text"></i>
     @Html.TextBoxFor(e => e.Title, null, new { @id = "newExerciseTitle", @class = "form-control" })
     @Html.LabelFor(e => e.Title, null, new { @for = "newExerciseTitle" })
     @Html.ValidationMessageFor(e => e.Title, null, new { @style = "color:red;" })
 </div>
 
-<!-- Material input email -->
 <div class="md-form">
-    <i class="fa fa-envelope prefix grey-text"></i>
-    @Html.TextBoxFor(e => e.Intervals, null, new { @id = "newExerciseIntervals", @class = "form-control" })
-    @Html.LabelFor(e => e.Intervals, null, new { @for = "newExerciseIntervals" })
-    @Html.ValidationMessageFor(e => e.Intervals, null, new { @style = "color:red;" })
-</div>
-
-<!-- Material input subject -->
-<div class="md-form">
-    <i class="fa fa-tag prefix grey-text"></i>
-    @Html.TextBoxFor(e => e.Reps, null, new { @id = "newExerciseReps", @class = "form-control" })
-    @Html.LabelFor(e => e.Reps, null, new { @for = "newExerciseReps" })
+    <i class="fa fa-clock-o prefix grey-text"></i>
+    @Html.TextBoxFor(e => e.Reps, null, new { @id = "newExerciseSets", @class = "form-control" })
+    @Html.LabelFor(e => e.Reps, null, new { @for = "newExerciseSets" })
     @Html.ValidationMessageFor(e => e.Reps, null, new { @style = "color:red;" })
 </div>
 
-<!-- Material textarea message -->
 <div class="md-form">
-    <i class="fa fa-pencil prefix grey-text"></i>
+    <i class="fa fa-clock-o prefix grey-text"></i>
+    @Html.TextBoxFor(e => e.Sets, null, new { @id = "newExerciseReps", @class = "form-control" })
+    @Html.LabelFor(e => e.Sets, null, new { @for = "newExerciseReps" })
+    @Html.ValidationMessageFor(e => e.Sets, null, new { @style = "color:red;" })
+</div>
+
+<div class="md-form">
+    <i class="fa fa-sliders prefix grey-text"></i>
     @Html.TextBoxFor(e => e.Weight, null, new { @id = "newExerciseWeight", @class = "form-control" })
     @Html.LabelFor(e => e.Weight, null, new { @for = "newExerciseWeight" })
     @Html.ValidationMessageFor(e => e.Weight, null, new { @style = "color:red;" })

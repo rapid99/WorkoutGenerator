@@ -19,6 +19,11 @@ namespace WorkoutGenerator.Controllers
             _database = _client.GetDatabase("WorkoutGenerator");
         }
 
+        public List<Exercise> GetDatabase()
+        {
+            return _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).ToList();
+        }
+
         public IActionResult Index()
         {
             var exercises = GetDatabase();
@@ -35,8 +40,7 @@ namespace WorkoutGenerator.Controllers
         [HttpPost]
         public IActionResult Create(Exercise model)
         {
-            if (ModelState.IsValid)
-                _database.GetCollection<Exercise>("Exercises").InsertOne(model);
+            _database.GetCollection<Exercise>("Exercises").InsertOne(model);
 
             return RedirectToAction("Index", model);
         }
@@ -51,7 +55,7 @@ namespace WorkoutGenerator.Controllers
 
             if (exercise_to_view == null)
                 return NotFound();
-
+             
             return View(exercise_to_view);
 
         }
@@ -76,11 +80,10 @@ namespace WorkoutGenerator.Controllers
         {
             try
             {
-                //Build where condition and update statement
                 var filter = Builders<Exercise>.Filter.Eq("Id", model.Id);
 
                 var updater = Builders<Exercise>.Update.Set("Title", model.Title);
-                updater = updater.Set("Intervals", model.Intervals);
+                updater = updater.Set("Sets", model.Sets);
                 updater = updater.Set("Reps", model.Reps);
                 updater = updater.Set("Weight", model.Weight);
 
@@ -128,11 +131,6 @@ namespace WorkoutGenerator.Controllers
             }
 
             return RedirectToAction("Index");
-        }
-
-        public List<Exercise> GetDatabase()
-        {
-            return _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).ToList();
         }
     }
 }
