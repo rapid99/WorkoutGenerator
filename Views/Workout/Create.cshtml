@@ -1,32 +1,45 @@
 ﻿@model IEnumerable<Exercise>
 
 <main>
-    @using (Html.BeginForm("AddExerciseToWorkout", "Workout", null, FormMethod.Post))
+    <h2>Create a new workout by adding exercises below!</h2>
+
+    @if (!Model.Any())
     {
-        <table class="table table-hover table-responsive-md table-fixed">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>@Html.DisplayNameFor(m => m.Title)</th>
-                    <th>@Html.DisplayNameFor(m => m.Reps)</th>
-                    <th>@Html.DisplayNameFor(m => m.Sets)</th>
-                    <th>@Html.DisplayNameFor(m => m.Weight)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var exercise in Model)
-                {
-                    <tr>
-                        <td>@Html.ActionLink("", "AddExerciseToWorkout", "Workout", new { id = exercise.Id }, new { @class = "fa fa-plus", style = "color: green;font-size: 110%;" })</td>
-                        <td>@Html.DisplayFor(m => exercise.Title)</td>
-                        <td>@Html.DisplayFor(m => exercise.Reps)</td>
-                        <td>@Html.DisplayFor(m => exercise.Sets)</td>
-                        <td>@Html.DisplayFor(m => exercise.Weight)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <h3>No exercises found!</h3>
     }
+    else
+    { 
+       
+        @Html.ActionLink("Start Over", "DeleteTempList", "Workout", null, new { @class = "btn btn-danger", onclick = "alert('Current workout deleted');" })
+
+        @using (Html.BeginForm("AddExerciseToWorkout", "Workout", null, FormMethod.Post))
+        {
+            <table class="table table-hover table-responsive-md table-fixed">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>@Html.DisplayNameFor(m => m.Title)</th>
+                        <th>@Html.DisplayNameFor(m => m.Reps)</th>
+                        <th>@Html.DisplayNameFor(m => m.Sets)</th>
+                        <th>@Html.DisplayNameFor(m => m.Weight)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var exercise in Model)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink("", "AddExerciseToWorkout", "Workout", new { id = exercise.Id }, new { @class = "fa fa-plus", style = "color: green;font-size: 110%;", onclick = "alert('Exercise added to workout!');" })</td>
+                            <td>@Html.DisplayFor(m => exercise.Title)</td>
+                            <td>@Html.DisplayFor(m => exercise.Reps)</td>
+                            <td>@Html.DisplayFor(m => exercise.Sets)</td>
+                            <td>@Html.DisplayFor(m => exercise.Weight)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
 
     @using (Html.BeginForm("Create", "Workout", null, FormMethod.Post))
     {

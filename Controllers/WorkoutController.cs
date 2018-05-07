@@ -13,7 +13,6 @@ namespace WorkoutGenerator.Controllers
     {
         MongoClient _client;
         IMongoDatabase _database;
-        List<Exercise> _newWorkout;
 
         public WorkoutController()
         {
@@ -24,6 +23,7 @@ namespace WorkoutGenerator.Controllers
         {
             return _database.GetCollection<Workout>("Workouts").Find(FilterDefinition<Workout>.Empty).ToList();
         }
+
         public IActionResult Index()
         {
             var workouts = GetDatabase();
@@ -42,16 +42,22 @@ namespace WorkoutGenerator.Controllers
         [HttpPost]
         public IActionResult Create(Workout model)
         {
+            //temporary list to hold exercises in the workout currently being created
             var tempList = _database.GetCollection<Exercise>("TempList").Find(FilterDefinition<Exercise>.Empty).ToList();
+
+            //instantiate model prop
             model.Exercises = new List<Exercise>();
 
+            //now that model prop is instantiated, add all exercises in temp list to model prop
             foreach (var exercise in tempList)
                 model.Exercises.Add(exercise);
 
             model.Times_Completed = 0;
 
+            //add model to db
             _database.GetCollection<Workout>("Workouts").InsertOne(model);
 
+            //delete temp list contents for next use
             _database.GetCollection<Exercise>("TempList").DeleteMany(FilterDefinition<Exercise>.Empty);
 
             return RedirectToAction("Index", model);
@@ -66,7 +72,13 @@ namespace WorkoutGenerator.Controllers
             return RedirectToAction("Create");
         }
 
-        [HttpGet]
+        public IActionResult DeleteTempList()
+        {
+            _database.GetCollection<Exercise>("TempList").DeleteMany(FilterDefinition<Exercise>.Empty);
+
+            return RedirectToAction("Create");
+        }
+
         public IActionResult Details(string id)
         {
             if (id == null)
