@@ -9,8 +9,9 @@
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(m => m.Exercises)</th>
-                <th>@Html.LabelFor(e => e.Sets, null, new { @for = "newSets" })</th>
-                <th>@Html.LabelFor(e => e.Times_Completed, null, new { @for = "newTimes" })</th>
+                <th>@Html.DisplayNameFor(e => e.Created_At)</th>
+                <th>@Html.DisplayNameFor(e => e.Sets)</th>
+                <th>@Html.DisplayNameFor(e => e.Times_Completed)</th>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +28,13 @@
                         <hr />
                     }
                 </td>
-                <td>@Html.TextBoxFor(e => e.Sets, null, new { @id = "newSets", @class = "form-control" }) @Html.ValidationMessageFor(e => e.Sets, null, new { @style = "color:red;" })</td>
-                <td>@Html.TextBoxFor(e => e.Times_Completed, null, new { @id = "newTimes", @class = "form-control" }) @Html.ValidationMessageFor(e => e.Times_Completed, null, new { @style = "color:red;" })</td>
-                <td><input type="submit" value="Update" class="btn btn-outline-deep-purple btn-group" id="edit" /></td>
-                <td>@Html.ActionLink("Back", "Index", "Workout", null, new { @class = "btn btn-secondary btn-group" })</td>
+                <td>@Html.DisplayFor(e => e.Created_At)</td>
+                <td>@Html.TextBoxFor(e => e.Sets, null, new { @class = "form-control" }) @Html.ValidationMessageFor(e => e.Sets, null, new { @style = "color:red;" })</td>
+                <td>@Html.TextBoxFor(e => e.Times_Completed, null, new { @class = "form-control" }) @Html.ValidationMessageFor(e => e.Times_Completed, null, new { @style = "color:red;" })</td>
+                <td>
+                    <input type="submit" value="Update" class="btn btn-info" id="edit" />
+                    @Html.ActionLink("Back", "Index", "Workout", null, new { @class = "btn btn-default" })
+                </td>
             </tr>
         </tbody>
     </table>

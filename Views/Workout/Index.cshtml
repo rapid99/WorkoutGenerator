@@ -2,14 +2,14 @@
 
 
 <main>
-    <div>
-        <h2>Workouts</h2>
+    <div class="container">
+        <h2 class="mt-4">Workouts</h2>
 
-        @Html.ActionLink("Add a new Workout", "Create", "Workout", null, new { @class = "btn btn-primary" })
+        <a href="@Url.Action("Create", "Workout")" class="btn btn-primary my-4">Add a new Workout<i class="fa fa-plus" style="margin-left: 10px;"></i></a>
 
         @if (!Model.Any())
         {
-            <h2>No workouts found!</h2>
+            <h2 class="mt-2">No workouts found!</h2>
         }
         else
         {
@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(m => m.Id)</th>
+                        @*<th>@Html.DisplayNameFor(m => m.Created_At)</th>*@
                         <th>@Html.DisplayNameFor(m => m.Sets)</th>
                         <th>@Html.DisplayNameFor(m => m.Times_Completed)</th>
                         <th></th>
@@ -26,13 +27,13 @@
                 <tbody>
                     @foreach (var workout in Model)
                     {
-                    <tr>
-                        <td>@Html.DisplayFor(m => workout.Exercises)</td>
-                        <td>@Html.DisplayFor(m => workout.Sets)</td>
-                        <td>@Html.DisplayFor(m => workout.Times_Completed)</td>
-                        <td>@Html.ActionLink("Details", "Details", "Workout", new { id = workout.Id }, new { style = "text-decoration: underline;" })</td>
-                        <td>@Html.ActionLink("Delete", "Delete", "Workout", new { id = workout.Id }, new { style = "color: red; text-decoration: underline;" })</td>
-                    </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(m => workout.Exercises)</td>
+                            <td>@Html.DisplayFor(m => workout.Sets)</td>
+                            <td>@Html.DisplayFor(m => workout.Times_Completed)</td>
+                            <td>@Html.ActionLink("Details", "Details", "Workout", new { id = workout.Id }, new { style = "text-decoration: underline;" })</td>
+                            <td>@Html.ActionLink("Delete", "Delete", "Workout", new { id = workout.Id }, new { style = "color: red; text-decoration: underline;" })</td>
+                        </tr>
                     }
                 </tbody>
             </table>

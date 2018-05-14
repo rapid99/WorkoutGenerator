@@ -5,9 +5,10 @@
 
     @using (Html.BeginForm("FinishedWorkout", "Generator"))
     {
-        @Html.ActionLink("Randomly Generate a Workout!", "Random", "Generator", null, new { @class = "btn btn-secondary my-4" })<br />
+        <a href="@Url.Action("Random", "Generator")" class="btn btn-secondary my-4" style="font-size: 120%;">Randomly Generate a Workout!<br /> <small class="my-1" style="font-size: 65%;">(<strong>@ViewBag.Total</strong> workouts to randomly choose from)</small></a>
+        <br />
 
-        <table class="table table-hover table-responsive-md table-fixed">
+        <table class="table table-hover table-responsive-md table-fixed mt-4">
             @foreach (var workout in Model)
             {
                 @foreach (var e in workout.Random_Workout.Exercises)

@@ -31,6 +31,7 @@ namespace WorkoutGenerator.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Total = _database.GetCollection<Workout>("Workouts").Find(FilterDefinition<Workout>.Empty).Count();
             var generatorDb = GetGeneratorDatabase();
             
             return View(generatorDb);

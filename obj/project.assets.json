@@ -3031,6 +3031,18 @@
           "lib/net40/PagedList.Mvc.dll": {}
         }
       },
+      "Pioneer.Pagination/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Razor.Runtime": "2.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Pioneer.Pagination.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pioneer.Pagination.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -8596,6 +8608,16 @@
         "pagedlist.mvc.nuspec"
       ]
     },
+    "Pioneer.Pagination/2.1.0": {
+      "sha512": "xzbpYXxPI4PjFfMK27v//QuhbJe/nqP0huiiOHTSvAOmCAxYbw2wJMOy5VbIj9BhRxc3j0yvZFPhaI15m785Fw==",
+      "type": "package",
+      "path": "pioneer.pagination/2.1.0",
+      "files": [
+        "lib/netstandard2.0/Pioneer.Pagination.dll",
+        "pioneer.pagination.2.1.0.nupkg.sha512",
+        "pioneer.pagination.nuspec"
+      ]
+    },
     "Remotion.Linq/2.1.1": {
       "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
@@ -13937,7 +13959,8 @@
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.4",
       "MongoDB.Driver >= 2.6.0",
-      "PagedList.Mvc >= 4.5.0"
+      "PagedList.Mvc >= 4.5.0",
+      "Pioneer.Pagination >= 2.1.0"
     ]
   },
   "packageFolders": {
@@ -14005,6 +14028,10 @@
           "PagedList.Mvc": {
             "target": "Package",
             "version": "[4.5.0, )"
+          },
+          "Pioneer.Pagination": {
+            "target": "Package",
+            "version": "[2.1.0, )"
           }
         },
         "imports": [

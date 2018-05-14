@@ -23,5 +23,7 @@ namespace WorkoutGenerator.Models
         public int Times_Completed { get; set; }
         [Required]
         public int Sets { get; set; }
+        public DateTime Created_At { get; set; }
+
     }
 }

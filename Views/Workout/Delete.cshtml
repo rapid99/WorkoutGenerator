@@ -15,10 +15,8 @@
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(m => m.Exercises)</th>
-                @*<th>@Html.DisplayNameFor(m => m.Sets)</th>
-                    <th>@Html.DisplayNameFor(m => m.Times_Completed)</th>*@
-                <th>@Html.LabelFor(e => e.Sets, null, new { @for = "newSets" })</th>
-                <th>@Html.LabelFor(e => e.Times_Completed, null, new { @for = "newTimes" })</th>
+                <th>@Html.DisplayNameFor(m => m.Sets)</th>
+                <th>@Html.DisplayNameFor(m => m.Times_Completed)</th>
             </tr>
         </thead>
         <tbody>
@@ -35,11 +33,13 @@
                         <hr />
                     }
                 </td>
+                <td>@Html.DisplayFor(m => m.Sets)</td>
+                <td>@Html.DisplayFor(m => m.Times_Completed)</td>
             </tr>
         </tbody>
     </table>
 
-    <input type="submit" class = "btn btn-warning btn-group" value="Delete" />
+    <input type="submit" class = "btn btn-danger btn-group" value="Delete" />
     @Html.ActionLink("Back", "Index", "Workout", null, new { @class = "btn btn-secondary btn-group" })
 }
 

@@ -1,20 +1,30 @@
 ﻿@model IEnumerable<Exercise>
 
 <main>
-    <h2>Create a new workout by adding exercises below!</h2>
+    <h2 class="mt-4">Create a new workout by adding exercises below!</h2>
 
     @if (!Model.Any())
     {
-        <h3>No exercises found!</h3>
+        <h3 class="mt-4">No exercises found!</h3>
     }
     else
-    { 
-       
-        @Html.ActionLink("Start Over", "DeleteTempList", "Workout", null, new { @class = "btn btn-danger", onclick = "alert('Current workout deleted');" })
+    {
+        @using (Html.BeginForm("Create", "Workout", null, FormMethod.Post))
+        {
+            <div class="mt-4">
+                <button class="btn btn-success" type="submit" id="createBtn">Create<i class="fa fa-paper-plane-o ml-2"></i></button>
+                <a href="@Url.Action("Create", "Workout")" class="btn btn-secondary">Sort By Title<i class="fa fa-list-ul" style="margin-left: 10px;"></i></a>
+                <a href="@Url.Action("SortByType", "Workout")" class="btn btn-secondary">Sort By Type<i class="fa fa-list-ul" style="margin-left: 10px;"></i></a>
+                <a href="@Url.Action("Index", "Workout")" class="btn btn-warning">Cancel<i class="fa fa-reply-all" style="margin-left: 10px;"></i></a>
+                <a href="@Url.Action("DeleteTempList", "Workout")" class="btn btn-danger" onclick="alert('Current workout deleted');">Start Over<i class="fa fa-retweet" style="margin-left: 10px;"></i></a>
+            </div>
+        }
+
+        <p class="my-3">There are currently <strong>@ViewBag.Total</strong> exercises to choose from!</p>
 
         @using (Html.BeginForm("AddExerciseToWorkout", "Workout", null, FormMethod.Post))
         {
-            <table class="table table-hover table-responsive-md table-fixed">
+            <table class="table table-hover table-responsive-md table-fixed mb-5">
                 <thead>
                     <tr>
                         <th></th>
@@ -27,25 +37,17 @@
                 <tbody>
                     @foreach (var exercise in Model)
                     {
-                    <tr>
-                        <td>@Html.ActionLink("", "AddExerciseToWorkout", "Workout", new { id = exercise.Id }, new { @class = "fa fa-plus", style = "color: green;font-size: 130%;", onclick = "alert('Exercise added to workout!');" })</td>
-                        <td>@Html.DisplayFor(m => exercise.Title)</td>
-                        <td>@Html.DisplayFor(m => exercise.Reps)</td>
-                        <td>@Html.DisplayFor(m => exercise.Weight)</td>
-                        <td>@Html.DisplayFor(m => exercise.Type)</td>
-                    </tr>
+                        <tr>
+                            <td>@Html.ActionLink("", "AddExerciseToWorkout", "Workout", new { id = exercise.Id }, new { @class = "fa fa-plus", style = "color: green;font-size: 130%;", onclick = "alert('Exercise added to workout!');" })</td>
+                            <td>@Html.DisplayFor(m => exercise.Title)</td>
+                            <td>@Html.DisplayFor(m => exercise.Reps)</td>
+                            <td>@Html.DisplayFor(m => exercise.Weight)</td>
+                            <td>@Html.DisplayFor(m => exercise.Type)</td>
+                        </tr>
                     }
                 </tbody>
             </table>
         }
     }
-
-
-    @using (Html.BeginForm("Create", "Workout", null, FormMethod.Post))
-    {
-        <div class="text-center mt-4">
-            <button class="btn btn-success" type="submit" id="createBtn">Create<i class="fa fa-paper-plane-o ml-2"></i></button>
-            @Html.ActionLink("Cancel", "Index", "Workout", null, new { @class = "btn btn-danger" })
-        </div>
-    }
+    <hr />
 </main>

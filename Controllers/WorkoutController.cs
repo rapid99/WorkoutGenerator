@@ -34,9 +34,21 @@ namespace WorkoutGenerator.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).ToList();
+            ViewBag.Total = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).Count();
+
+            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(e => e.Title).ToList();
 
             return View(exercises);
+        }
+
+        [HttpGet]
+        public IActionResult SortByType()
+        {
+            ViewBag.Total = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).Count();
+
+            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(e => e.Type).ToList();
+
+            return View("Create", exercises);
         }
 
         [HttpPost]
@@ -47,6 +59,11 @@ namespace WorkoutGenerator.Controllers
 
             //instantiate model prop
             model.Exercises = new List<Exercise>();
+
+            //created time: convert to MST
+            TimeZoneInfo mountain = TimeZoneInfo.FindSystemTimeZoneById("Mountain Standard Time");
+            DateTime utc = DateTime.UtcNow;
+            model.Created_At = TimeZoneInfo.ConvertTimeFromUtc(utc, mountain);
 
             //now that model prop is instantiated, add all exercises in temp list to model prop
             foreach (var exercise in tempList)
@@ -66,6 +83,8 @@ namespace WorkoutGenerator.Controllers
 
         public IActionResult AddExerciseToWorkout(string id)
         {
+            ViewBag.Total = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).Count();
+
             var exercise_to_add = _database.GetCollection<Exercise>("Exercises").Find(i => i.Id == id).FirstOrDefault();
             var tempList = _database.GetCollection<Exercise>("TempList").Find(FilterDefinition<Exercise>.Empty).ToList();
 
@@ -80,6 +99,8 @@ namespace WorkoutGenerator.Controllers
 
         public IActionResult DeleteTempList()
         {
+            ViewBag.Total = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).Count();
+
             _database.GetCollection<Exercise>("TempList").DeleteMany(FilterDefinition<Exercise>.Empty);
 
             return RedirectToAction("Create");
