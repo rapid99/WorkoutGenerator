@@ -1,10 +1,10 @@
 ﻿@model Exercise
+<script src="~/MDB 4.5.0/js/jquery-3.2.1.min.js"></script>
 
 @using (Html.BeginForm("Create", "Exercise"))
 {
     <p class="h4 text-center mb-4">New Exercise</p>
     @Html.Partial("_ExerciseForm")
-
     <div class="text-center mt-4">
         <button class="btn btn-success" type="submit" id="createBtn">Create<i class="fa fa-paper-plane-o ml-2"></i></button>
         @Html.ActionLink("Cancel", "Index", "Exercise", null, new { @class = "btn btn-danger" })

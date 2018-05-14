@@ -53,6 +53,7 @@ namespace WorkoutGenerator.Controllers
                 model.Exercises.Add(exercise);
 
             model.Times_Completed = 0;
+            model.Sets = 1;
 
             //add model to db
             _database.GetCollection<Workout>("Workouts").InsertOne(model);
@@ -66,6 +67,11 @@ namespace WorkoutGenerator.Controllers
         public IActionResult AddExerciseToWorkout(string id)
         {
             var exercise_to_add = _database.GetCollection<Exercise>("Exercises").Find(i => i.Id == id).FirstOrDefault();
+            var tempList = _database.GetCollection<Exercise>("TempList").Find(FilterDefinition<Exercise>.Empty).ToList();
+
+            foreach(var e in tempList)
+                if (e.Id == id)
+                    return BadRequest("Cannot add an exercise more than once to the same workout");
 
             _database.GetCollection<Exercise>("TempList").InsertOne(exercise_to_add);
 
@@ -79,6 +85,7 @@ namespace WorkoutGenerator.Controllers
             return RedirectToAction("Create");
         }
 
+        [HttpGet]
         public IActionResult Details(string id)
         {
             if (id == null)
@@ -91,6 +98,63 @@ namespace WorkoutGenerator.Controllers
 
             return View(workout_to_view);
 
-        } 
+        }
+
+        [HttpPost]
+        public IActionResult Update(Workout model)
+        {
+            try
+            {
+                var filter = Builders<Workout>.Filter.Eq("Id", model.Id); 
+
+                var updater = Builders<Workout>.Update.Set("Sets", model.Sets);
+                updater = updater.Set("Times_Completed", model.Times_Completed);
+
+                var result = _database.GetCollection<Workout>("Workouts").UpdateOne(filter, updater);
+
+                if (result.IsAcknowledged == false)
+                    return BadRequest("Unable to update workout");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var workout_to_delete = _database.GetCollection<Workout>("Workouts").Find(i => i.Id == id).FirstOrDefault();
+
+            if (workout_to_delete == null)
+                return NotFound();
+
+            return View(workout_to_delete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Workout model)
+        {
+            try
+            {
+                var result = _database.GetCollection<Workout>("Workouts").DeleteOne(i => i.Id == model.Id);
+
+                if (result.IsAcknowledged == false)
+                    return BadRequest("Unable to delete workout");
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

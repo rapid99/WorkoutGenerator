@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using WorkoutGenerator.Models;
+using PagedList;
 
 namespace WorkoutGenerator.Controllers
 {
@@ -24,9 +25,9 @@ namespace WorkoutGenerator.Controllers
             return _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).ToList();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page = 0)
         {
-            var exercises = GetDatabase();
+            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Title).ToList();
 
             return View("Index", exercises);
         }
@@ -83,14 +84,14 @@ namespace WorkoutGenerator.Controllers
                 var filter = Builders<Exercise>.Filter.Eq("Id", model.Id);
 
                 var updater = Builders<Exercise>.Update.Set("Title", model.Title);
-                updater = updater.Set("Sets", model.Sets);
                 updater = updater.Set("Reps", model.Reps);
                 updater = updater.Set("Weight", model.Weight);
+                updater = updater.Set("Type", model.Type);
 
                 var result = _database.GetCollection<Exercise>("Exercises").UpdateOne(filter, updater);
 
                 if (result.IsAcknowledged == false)
-                    return BadRequest("Unable to update the rating for " + model.Title);
+                    return BadRequest("Unable to update " + model.Title);
             }
             catch (Exception ex)
             {
@@ -122,7 +123,7 @@ namespace WorkoutGenerator.Controllers
                 var result = _database.GetCollection<Exercise>("Exercises").DeleteOne(i => i.Id == model.Id);
 
                 if (result.IsAcknowledged == false)
-                    return BadRequest("Unable to delete the rating for " + model.Title);
+                    return BadRequest("Unable to delete " + model.Title);
 
             }
             catch (Exception ex)

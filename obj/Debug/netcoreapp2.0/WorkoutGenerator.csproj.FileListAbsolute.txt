@@ -3,9 +3,9 @@ C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\bin\Debug\netcorea
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\bin\Debug\netcoreapp2.0\WorkoutGenerator.runtimeconfig.dev.json
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\bin\Debug\netcoreapp2.0\WorkoutGenerator.dll
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\bin\Debug\netcoreapp2.0\WorkoutGenerator.pdb
-C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.csprojResolveAssemblyReference.cache
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.csproj.CoreCompileInputs.cache
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.AssemblyInfoInputs.cache
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.AssemblyInfo.cs
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.dll
 C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.pdb
+C:\Users\matth\source\repos\WorkoutGenerator\WorkoutGenerator\obj\Debug\netcoreapp2.0\WorkoutGenerator.csprojAssemblyReference.cache

@@ -1,33 +1,30 @@
 ﻿@model IEnumerable<GeneratorViewModel>
 
-<h2>Generator</h2>
+<div class="container">
+    <h2 class="mt-3">Generator</h2>
 
-@Html.ActionLink("Randomly Generate a Workout!", "Random", "Generator", null, new { @class = "btn btn-secondary fa fa-refresh" })
-
-
-@if (Model.Any())
-{
-<table class="table table-hover table-responsive-md table-fixed">
-    <tr>
-        <th style="text-decoration: underline;">Your randomly generated workout:</th>
-    </tr>
-    @foreach (var exercise in Model)
+    @using (Html.BeginForm("FinishedWorkout", "Generator"))
     {
+        @Html.ActionLink("Randomly Generate a Workout!", "Random", "Generator", null, new { @class = "btn btn-secondary my-4" })<br />
 
-        @foreach (var e in exercise.Random_Workout.Exercises)
-        {
-            <tr>
-                <td><strong>@e.Title</strong></td>
-                <td>
-                    <small><label><strong>Reps:</strong></label> @e.Reps</small> ||
-                    <small><label><strong>Sets:</strong></label>@e.Sets</small> ||
-                    <small><label><strong>Weight / Speed:</strong></label> @e.Weight</small>
-                </td>
-            </tr>
-        }
-        @*<tr>
-            <td>@Html.ActionLink("I finished this workout!", "FinishedWorkout", "Generator", new { id = exercise.Id }, new { @class = "btn btn-success" })</td>
-        </tr>*@
+        <table class="table table-hover table-responsive-md table-fixed">
+            @foreach (var workout in Model)
+            {
+                @foreach (var e in workout.Random_Workout.Exercises)
+                {
+                    <tr>
+                        <td><strong>@e.Title</strong></td>
+                        <td>
+                            <small><label><strong>Reps:</strong></label> @e.Reps</small> ||
+                            <small><label><strong>Weight / Speed:</strong></label> @e.Weight</small> ||
+                            <small><label><strong>Type</strong></label> @e.Type</small>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td style="font-weight: bold;">Sets: @workout.Random_Workout.Sets</td>
+                </tr>
+                }
+        </table>
     }
-</table>
-}
+</div>

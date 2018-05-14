@@ -20,20 +20,20 @@
                         <th></th>
                         <th>@Html.DisplayNameFor(m => m.Title)</th>
                         <th>@Html.DisplayNameFor(m => m.Reps)</th>
-                        <th>@Html.DisplayNameFor(m => m.Sets)</th>
                         <th>@Html.DisplayNameFor(m => m.Weight)</th>
+                        <th>@Html.DisplayNameFor(m => m.Type)</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var exercise in Model)
                     {
-                        <tr>
-                            <td>@Html.ActionLink("", "AddExerciseToWorkout", "Workout", new { id = exercise.Id }, new { @class = "fa fa-plus", style = "color: green;font-size: 110%;", onclick = "alert('Exercise added to workout!');" })</td>
-                            <td>@Html.DisplayFor(m => exercise.Title)</td>
-                            <td>@Html.DisplayFor(m => exercise.Reps)</td>
-                            <td>@Html.DisplayFor(m => exercise.Sets)</td>
-                            <td>@Html.DisplayFor(m => exercise.Weight)</td>
-                        </tr>
+                    <tr>
+                        <td>@Html.ActionLink("", "AddExerciseToWorkout", "Workout", new { id = exercise.Id }, new { @class = "fa fa-plus", style = "color: green;font-size: 130%;", onclick = "alert('Exercise added to workout!');" })</td>
+                        <td>@Html.DisplayFor(m => exercise.Title)</td>
+                        <td>@Html.DisplayFor(m => exercise.Reps)</td>
+                        <td>@Html.DisplayFor(m => exercise.Weight)</td>
+                        <td>@Html.DisplayFor(m => exercise.Type)</td>
+                    </tr>
                     }
                 </tbody>
             </table>

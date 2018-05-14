@@ -21,6 +21,7 @@ namespace WorkoutGenerator.Models
         [RegularExpression("^[0-9]*$", ErrorMessage = "Times completed can only be a number!")]
         [Display(Name ="Times Completed")]
         public int Times_Completed { get; set; }
-
+        [Required]
+        public int Sets { get; set; }
     }
 }

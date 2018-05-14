@@ -1,14 +1,22 @@
-﻿@model Workout
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<hr />
-<h2>Now viewing workout <span style="font-weight:bold;">@Model.Id</span></h2>
+@model Workout
 
-@using (Html.BeginForm("Update", "Workout", new { id = Model.Id }))
+<h2>Delete Workout</h2>
+
+<h3>Are you sure you want to delete the following workout?</h3>
+
+@using (Html.BeginForm("Delete", "Workout"))
 {
     <table class="table table-responsive-md table-fixed">
+        <tbody class="table table-responsive-md table-fixed">
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(m => m.Exercises)</th>
+                @*<th>@Html.DisplayNameFor(m => m.Sets)</th>
+                    <th>@Html.DisplayNameFor(m => m.Times_Completed)</th>*@
                 <th>@Html.LabelFor(e => e.Sets, null, new { @for = "newSets" })</th>
                 <th>@Html.LabelFor(e => e.Times_Completed, null, new { @for = "newTimes" })</th>
             </tr>
@@ -27,21 +35,12 @@
                         <hr />
                     }
                 </td>
-                <td>@Html.TextBoxFor(e => e.Sets, null, new { @id = "newSets", @class = "form-control" }) @Html.ValidationMessageFor(e => e.Sets, null, new { @style = "color:red;" })</td>
-                <td>@Html.TextBoxFor(e => e.Times_Completed, null, new { @id = "newTimes", @class = "form-control" }) @Html.ValidationMessageFor(e => e.Times_Completed, null, new { @style = "color:red;" })</td>
-                <td><input type="submit" value="Update" class="btn btn-outline-deep-purple btn-group" id="edit" /></td>
-                <td>@Html.ActionLink("Back", "Index", "Workout", null, new { @class = "btn btn-secondary btn-group" })</td>
             </tr>
         </tbody>
     </table>
+
+    <input type="submit" class = "btn btn-warning btn-group" value="Delete" />
+    @Html.ActionLink("Back", "Index", "Workout", null, new { @class = "btn btn-secondary btn-group" })
 }
 
-<script>
-$('#edit').keypress(function (e) {
-    if (e.which == 13) {
-        $('#editBtn').focus().click();
-        return false;
-    }
-});
-</script>
 

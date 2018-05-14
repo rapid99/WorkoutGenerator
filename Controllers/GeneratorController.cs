@@ -53,17 +53,16 @@ namespace WorkoutGenerator.Controllers
             return RedirectToAction("Index", generator);
         }
 
-        //public IActionResult FinishedWorkout(string id)
+        //public IActionResult FinishedWorkout(Workout model)
         //{
-        //    var db = GetWorkoutDatabase();
-        //    var workout = db.Where(i => i.Id == id).FirstOrDefault();
-        //    _database.GetCollection<Workout>("Workouts").Find(FilterDefinition<Workout>)
+        //    var filter = Builders<Workout>.Filter.Eq("Id", model.Id);
 
-        //    timesCompleted++;
-        //    workout.Times_Completed = timesCompleted;
-        //    _database.GetCollection<Workout>("Workouts").InsertOne(workout);
+        //    model.Times_Completed++;
+        //    var updater = Builders<Workout>.Update.Set("Times_Completed", model.Times_Completed);
 
-        //    return RedirectToAction("Generator");           
+        //    _database.GetCollection<Workout>("Workouts").UpdateOne(filter, updater);
+
+        //    return RedirectToAction("Index");           
         //}
 
     }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/MDB 4.5.0/css/style.css" rel="stylesheet" />
 </head>
-<body class="cyan-skin">
+<body class="black-skin">
     <header>
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg">
@@ -19,18 +19,18 @@
             @*<a class="navbar-brand" href="#">Navbar</a>*@
 
             <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav"
                     aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon cyan"></span>
             </button>
 
             <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="basicExampleNav">
+            <div class="collapse navbar-collapse" id="nav">
 
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="~/Home">
+                        <a class="nav-link" href="~/">
                             <span class="fa fa-home"> Home</span>
                             <span class="sr-only">(current)</span>
                         </a>
@@ -46,18 +46,18 @@
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="~/Exercise">Exercises</a>
                             <a class="dropdown-item" href="~/Workout">Workouts</a>
-                            <a class="dropdown-item" href="#">Users</a>
+                            <a class="dropdown-item disabled" href="#">Users</a>
                         </div>
                     </li>
 
                 </ul>
                 <!-- Links -->
 
-                <form class="form-inline">
+                @*<form class="form-inline">
                     <div class="md-form mt-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     </div>
-                </form>
+                </form>*@
             </div>
             <!-- Collapsible content -->
 
