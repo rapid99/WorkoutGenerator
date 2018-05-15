@@ -4,9 +4,21 @@
     <div>
         <h2>Exercises</h2>
 
-        @Html.ActionLink("Add a new Exercise", "Create", "Exercise", null, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Sort By Title", "Index", "Exercise", null, new { @class = "btn btn-secondary" })
-        @Html.ActionLink("Sort By Type", "SortByType", "Exercise", null, new { @class = "btn btn-secondary" })
+        <div class="row my-3">
+            <a href="@Url.Action("Create", "Exercise")" class="btn btn-primary">Add a new Exercise<i class="fa fa-plus" style="margin-left: 10px;"></i></a>
+            <a href="@Url.Action("Index", "Exercise")" class="btn btn-secondary">Sort By Title<i class="fa fa-list-ul" style="margin-left: 10px;"></i></a>
+            <a href="@Url.Action("SortByType", "Exercise")" class="btn btn-secondary">Sort By Type<i class="fa fa-list-ul" style="margin-left: 10px;"></i></a>
+            <div style="margin-left: 20%;">
+                @using (Html.BeginForm())
+                {
+                    <div class="md-form">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        @Html.TextBox("search", null, new { @placeholder = "Search" })
+                        <input type="submit" value="Go" />
+                    </div>
+                }
+            </div>
+        </div>
 
         @if (!Model.Any())
         {
@@ -42,6 +54,7 @@
                     <tr>
                         <td><pioneer-pagination info="@ViewBag.PaginatedMeta" route="/blog" previous-page-text="hey" next-page-text="you"></pioneer-pagination></td>
                     </tr>
+
                 </tbody>
             </table>
         }

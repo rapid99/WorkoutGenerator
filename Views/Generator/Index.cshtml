@@ -5,7 +5,20 @@
 
     @using (Html.BeginForm("FinishedWorkout", "Generator"))
     {
-        <a href="@Url.Action("Random", "Generator")" class="btn btn-secondary my-4" style="font-size: 120%;">Randomly Generate a Workout!<br /> <small class="my-1" style="font-size: 65%;">(<strong>@ViewBag.Total</strong> workouts to randomly choose from)</small></a>
+        @if (ViewBag.Total == 1)
+        {
+            <a href="@Url.Action("Random", "Generator")" class="btn btn-secondary my-4" style="font-size: 120%;">
+                Randomly Generate a Workout!<br />
+                <small class="my-1" style="font-size: 65%;">(<strong>@ViewBag.Total</strong> workout currently available)</small>
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("Random", "Generator")" class="btn btn-secondary my-4" style="font-size: 120%;">
+                Randomly Generate a Workout!<br />
+                <small class="my-1" style="font-size: 65%;">(<strong>@ViewBag.Total</strong> workouts currently available)</small>
+            </a>
+        }
         <br />
 
         <table class="table table-hover table-responsive-md table-fixed mt-4">
@@ -25,7 +38,7 @@
                 <tr>
                     <td style="font-weight: bold;">Sets: @workout.Random_Workout.Sets</td>
                 </tr>
-                }
+            }
         </table>
     }
 </div>

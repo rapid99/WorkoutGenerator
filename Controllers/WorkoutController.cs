@@ -52,6 +52,7 @@ namespace WorkoutGenerator.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Workout model)
         {
             //temporary list to hold exercises in the workout currently being created

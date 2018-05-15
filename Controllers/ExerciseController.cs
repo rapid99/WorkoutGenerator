@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using WorkoutGenerator.Models;
-using Pioneer.Pagination;
+using PagedList;
 
 namespace WorkoutGenerator.Controllers
 {
@@ -13,13 +13,11 @@ namespace WorkoutGenerator.Controllers
     {
         MongoClient _client;
         IMongoDatabase _database;
-        IPaginatedMetaService _paginatedMetaService;
 
-        public ExerciseController(IPaginatedMetaService paginatedMetaService)
+        public ExerciseController()
         {
             _client = new MongoClient("mongodb://localhost:27017");
             _database = _client.GetDatabase("WorkoutGenerator");
-            _paginatedMetaService = paginatedMetaService;
         }
 
         public List<Exercise> GetDatabase()
@@ -27,22 +25,28 @@ namespace WorkoutGenerator.Controllers
             return _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).ToList();
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string search)
         {
-            var totalNumberInCollection = GetDatabase().Count();
-            var itemsPerPage = 5;
-            ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(totalNumberInCollection, page, itemsPerPage);
+            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Title).ToEnumerable();
 
-            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Title).ToList();
+            if (!String.IsNullOrEmpty(search))
+            {
+                exercises = exercises.Where(a => a.Title.ToUpper().Contains(search.ToUpper()) || a.Type.ToUpper().Contains(search.ToUpper()) || a.Reps.ToUpper().Contains(search.ToUpper()) || a.Weight.ToUpper().Contains(search.ToUpper()));
+            }
 
-            return View("Index", exercises);
+            return View("Index", exercises.ToList());
         }
 
-        public IActionResult SortByType()
+        public IActionResult SortByType(string search)
         {
-            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Type).Limit(7).ToList();
+            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Type).Limit(7).ToEnumerable();
 
-            return View("Index", exercises);
+            if (!String.IsNullOrEmpty(search))
+            {
+                exercises = exercises.Where(a => a.Title.ToUpper().Contains(search.ToUpper()) || a.Type.ToUpper().Contains(search.ToUpper()) || a.Reps.ToUpper().Contains(search.ToUpper()) || a.Weight.ToUpper().Contains(search.ToUpper()));
+            }
+
+            return View("Index", exercises.ToList());
         }
 
         [HttpGet]
