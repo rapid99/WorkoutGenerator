@@ -24,6 +24,8 @@ namespace WorkoutGenerator.Models
         [Required]
         [Display(Name = "Type")]
         public string Type { get; set; }
+        [Display(Name = "Weight Training?")]
+        public bool Is_Weight_Training { get; set; }
         public List<Exercise> TempList { get; set; }
 
     }

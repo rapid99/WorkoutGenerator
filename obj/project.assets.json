@@ -2882,7 +2882,7 @@
           }
         }
       },
-      "MongoDB.Bson/2.6.0": {
+      "MongoDB.Bson/2.6.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2898,11 +2898,11 @@
           "lib/netstandard1.5/MongoDB.Bson.dll": {}
         }
       },
-      "MongoDB.Driver/2.6.0": {
+      "MongoDB.Driver/2.6.1": {
         "type": "package",
         "dependencies": {
-          "MongoDB.Bson": "2.6.0",
-          "MongoDB.Driver.Core": "2.6.0",
+          "MongoDB.Bson": "2.6.1",
+          "MongoDB.Driver.Core": "2.6.1",
           "NETStandard.Library": "1.6.1",
           "System.ComponentModel.TypeConverter": "4.1.0",
           "System.Linq.Queryable": "4.0.1"
@@ -2914,11 +2914,11 @@
           "lib/netstandard1.5/MongoDB.Driver.dll": {}
         }
       },
-      "MongoDB.Driver.Core/2.6.0": {
+      "MongoDB.Driver.Core/2.6.1": {
         "type": "package",
         "dependencies": {
           "DnsClient": "1.0.7",
-          "MongoDB.Bson": "2.6.0",
+          "MongoDB.Bson": "2.6.1",
           "NETStandard.Library": "1.6.1",
           "System.Collections.Specialized": "4.0.1",
           "System.Diagnostics.TraceSource": "4.0.0",
@@ -3010,37 +3010,28 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
-      "PagedList/1.17.0": {
+      "PagedList.Core/1.17.4": {
         "type": "package",
         "compile": {
-          "lib/net40/PagedList.dll": {}
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
         },
         "runtime": {
-          "lib/net40/PagedList.dll": {}
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
         }
       },
-      "PagedList.Mvc/4.5.0": {
+      "PagedList.Core.Mvc/1.0.1": {
         "type": "package",
         "dependencies": {
-          "PagedList": "1.17.0"
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
+          "Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "PagedList.Core": "1.17.4"
         },
         "compile": {
-          "lib/net40/PagedList.Mvc.dll": {}
+          "lib/netstandard1.6/PagedList.Core.Mvc.dll": {}
         },
         "runtime": {
-          "lib/net40/PagedList.Mvc.dll": {}
-        }
-      },
-      "Pioneer.Pagination/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Razor.Runtime": "2.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/Pioneer.Pagination.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Pioneer.Pagination.dll": {}
+          "lib/netstandard1.6/PagedList.Core.Mvc.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -8363,45 +8354,45 @@
         "version.txt"
       ]
     },
-    "MongoDB.Bson/2.6.0": {
-      "sha512": "r1+TPncS+vJTXH7c53YeKJ9iwZGL3VQxZhCNbqOvWr2bqYMVNaPVuwudi8iO25KMSqRF6p3r26Tad+ORwL13KA==",
+    "MongoDB.Bson/2.6.1": {
+      "sha512": "pKSE9nG9OZX2uPjSI/AGWLGtOVINNiUbLpJYtFN/0oxWams0KbXOW6tFXAoL1iXuWUR3RxSz8u4DIhueCSm/Jg==",
       "type": "package",
-      "path": "mongodb.bson/2.6.0",
+      "path": "mongodb.bson/2.6.1",
       "files": [
         "License.rtf",
         "lib/net45/MongoDB.Bson.dll",
         "lib/net45/MongoDB.Bson.xml",
         "lib/netstandard1.5/MongoDB.Bson.dll",
         "lib/netstandard1.5/MongoDB.Bson.xml",
-        "mongodb.bson.2.6.0.nupkg.sha512",
+        "mongodb.bson.2.6.1.nupkg.sha512",
         "mongodb.bson.nuspec"
       ]
     },
-    "MongoDB.Driver/2.6.0": {
-      "sha512": "Xan8v/nscmrb4qcpzOFDguc8ZGxSZSAOFCqH/Mg2Jeu6l9P9QmG6mqIjWyay3IbRmoe9fNvSgSoYDTAP8IQzAw==",
+    "MongoDB.Driver/2.6.1": {
+      "sha512": "GwEKCHKjmgcsinLiLs7q54YoS4n03e+Ax/21j4PvppTYQAIpPusX/qdaU/gvZbpH97k/LmSGBN/5cdxN6mvFGw==",
       "type": "package",
-      "path": "mongodb.driver/2.6.0",
+      "path": "mongodb.driver/2.6.1",
       "files": [
         "License.rtf",
         "lib/net45/MongoDB.Driver.dll",
         "lib/net45/MongoDB.Driver.xml",
         "lib/netstandard1.5/MongoDB.Driver.dll",
         "lib/netstandard1.5/MongoDB.Driver.xml",
-        "mongodb.driver.2.6.0.nupkg.sha512",
+        "mongodb.driver.2.6.1.nupkg.sha512",
         "mongodb.driver.nuspec"
       ]
     },
-    "MongoDB.Driver.Core/2.6.0": {
-      "sha512": "TGSRAD8kiyh7QlkY4WYi6o8xYKmIpsJlZh5I8faVNJc1E+hUbDnJILIOtG41P9MAJl9bxUH7XRUcEoGog9/CVg==",
+    "MongoDB.Driver.Core/2.6.1": {
+      "sha512": "lBjITp66o0OX5PHp5INxYTOz7RZa2GCPpKXUYZMo+1Cxy8TtIDiba6PmP6XB5KO+Zw/8AeofSh4ofj1uHxXuqQ==",
       "type": "package",
-      "path": "mongodb.driver.core/2.6.0",
+      "path": "mongodb.driver.core/2.6.1",
       "files": [
         "License.rtf",
         "lib/net45/MongoDB.Driver.Core.dll",
         "lib/net45/MongoDB.Driver.Core.xml",
         "lib/netstandard1.5/MongoDB.Driver.Core.dll",
         "lib/netstandard1.5/MongoDB.Driver.Core.xml",
-        "mongodb.driver.core.2.6.0.nupkg.sha512",
+        "mongodb.driver.core.2.6.1.nupkg.sha512",
         "mongodb.driver.core.nuspec"
       ]
     },
@@ -8585,37 +8576,47 @@
         "nuget.frameworks.nuspec"
       ]
     },
-    "PagedList/1.17.0": {
-      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
+    "PagedList.Core/1.17.4": {
+      "sha512": "Me111vdmlPp4GGeHqvNlnv4Raq1f1F77fDsJebuKsHCZXG4v4kMDzd5h1YVDv/Q7q9DuVgueR9mxp7eO7Yj4LA==",
       "type": "package",
-      "path": "pagedlist/1.17.0",
+      "path": "pagedlist.core/1.17.4",
       "files": [
-        "lib/net40/PagedList.dll",
-        "lib/net40/PagedList.xml",
-        "pagedlist.1.17.0.nupkg.sha512",
-        "pagedlist.nuspec"
+        "lib/net45/PagedList.Core.dll",
+        "lib/net45/PagedList.Core.pdb",
+        "lib/net451/PagedList.Core.dll",
+        "lib/net451/PagedList.Core.pdb",
+        "lib/net461/PagedList.Core.dll",
+        "lib/net461/PagedList.Core.pdb",
+        "lib/net462/PagedList.Core.dll",
+        "lib/net462/PagedList.Core.pdb",
+        "lib/netcoreapp1.0/PagedList.Core.dll",
+        "lib/netcoreapp1.0/PagedList.Core.pdb",
+        "lib/netstandard1.0/PagedList.Core.dll",
+        "lib/netstandard1.0/PagedList.Core.pdb",
+        "lib/netstandard1.1/PagedList.Core.dll",
+        "lib/netstandard1.1/PagedList.Core.pdb",
+        "lib/netstandard1.2/PagedList.Core.dll",
+        "lib/netstandard1.2/PagedList.Core.pdb",
+        "lib/netstandard1.3/PagedList.Core.dll",
+        "lib/netstandard1.3/PagedList.Core.pdb",
+        "lib/netstandard1.4/PagedList.Core.dll",
+        "lib/netstandard1.4/PagedList.Core.pdb",
+        "lib/netstandard1.5/PagedList.Core.dll",
+        "lib/netstandard1.5/PagedList.Core.pdb",
+        "lib/netstandard1.6/PagedList.Core.dll",
+        "lib/netstandard1.6/PagedList.Core.pdb",
+        "pagedlist.core.1.17.4.nupkg.sha512",
+        "pagedlist.core.nuspec"
       ]
     },
-    "PagedList.Mvc/4.5.0": {
-      "sha512": "D0M4qW2g4a9cwG8ozIKUnJheCrm5GpFTceqUl63AXWaAVnTgk+TysZYUOGMsBRuzid8aF+/E8b0bXM6+90jiEw==",
+    "PagedList.Core.Mvc/1.0.1": {
+      "sha512": "CQIjzt5xPtWZdNgHRs0j5vupwzYGxzQWsaa0XzzzYkV1Kz5UndJ/fT9Z/Ln16ARN3RjRPDqv3/s5if7UJ/dWnA==",
       "type": "package",
-      "path": "pagedlist.mvc/4.5.0",
+      "path": "pagedlist.core.mvc/1.0.1",
       "files": [
-        "Content/Content/PagedList.css",
-        "lib/net40/PagedList.Mvc.XML",
-        "lib/net40/PagedList.Mvc.dll",
-        "pagedlist.mvc.4.5.0.nupkg.sha512",
-        "pagedlist.mvc.nuspec"
-      ]
-    },
-    "Pioneer.Pagination/2.1.0": {
-      "sha512": "xzbpYXxPI4PjFfMK27v//QuhbJe/nqP0huiiOHTSvAOmCAxYbw2wJMOy5VbIj9BhRxc3j0yvZFPhaI15m785Fw==",
-      "type": "package",
-      "path": "pioneer.pagination/2.1.0",
-      "files": [
-        "lib/netstandard2.0/Pioneer.Pagination.dll",
-        "pioneer.pagination.2.1.0.nupkg.sha512",
-        "pioneer.pagination.nuspec"
+        "lib/netstandard1.6/PagedList.Core.Mvc.dll",
+        "pagedlist.core.mvc.1.0.1.nupkg.sha512",
+        "pagedlist.core.mvc.nuspec"
       ]
     },
     "Remotion.Linq/2.1.1": {
@@ -13958,9 +13959,8 @@
       "Microsoft.AspNetCore.All >= 2.0.8",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.4",
-      "MongoDB.Driver >= 2.6.0",
-      "PagedList.Mvc >= 4.5.0",
-      "Pioneer.Pagination >= 2.1.0"
+      "MongoDB.Driver >= 2.6.1",
+      "PagedList.Core.Mvc >= 1.0.1"
     ]
   },
   "packageFolders": {
@@ -14023,15 +14023,11 @@
           },
           "MongoDB.Driver": {
             "target": "Package",
-            "version": "[2.6.0, )"
+            "version": "[2.6.1, )"
           },
-          "PagedList.Mvc": {
+          "PagedList.Core.Mvc": {
             "target": "Package",
-            "version": "[4.5.0, )"
-          },
-          "Pioneer.Pagination": {
-            "target": "Package",
-            "version": "[2.1.0, )"
+            "version": "[1.0.1, )"
           }
         },
         "imports": [
@@ -14079,26 +14075,6 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Web.Infrastructure",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList.Mvc 4.5.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList.Mvc",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.0"
       ]

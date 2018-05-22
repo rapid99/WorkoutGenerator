@@ -31,7 +31,7 @@ namespace WorkoutGenerator.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Total = _database.GetCollection<Workout>("Workouts").Find(FilterDefinition<Workout>.Empty).Count();
+            ViewBag.TotalCardio = _database.GetCollection<Workout>("Workouts").Find(FilterDefinition<Workout>.Empty).Count();
             var generatorDb = GetGeneratorDatabase();
             
             return View(generatorDb);
@@ -42,12 +42,19 @@ namespace WorkoutGenerator.Controllers
             _database.GetCollection<GeneratorViewModel>("RandomWorkout").DeleteMany(FilterDefinition<GeneratorViewModel>.Empty);
 
             var workoutDb = GetWorkoutDatabase();
-
             var random = new Random();
             var r = random.Next(workoutDb.Count());
             var generator = new GeneratorViewModel();
 
-            generator.Random_Workout = workoutDb[r];
+            try
+            {
+                generator.Random_Workout = workoutDb[r];
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+
 
             _database.GetCollection<GeneratorViewModel>("RandomWorkout").InsertOne(generator);
 

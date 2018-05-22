@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "89dc5d84c28fb0dd516e0aa5d2c182a62c2c6b60"
+    "signature": "d8e3f11d7b2119f3160167d08bdab8a3f3c93d6a"
   },
   "compilationOptions": {
     "defines": [
@@ -27,9 +27,8 @@
           "Microsoft.AspNetCore.All": "2.0.8",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.4",
-          "MongoDB.Driver": "2.6.0",
-          "PagedList.Mvc": "4.5.0",
-          "Pioneer.Pagination": "2.1.0"
+          "MongoDB.Driver": "2.6.1",
+          "PagedList.Core.Mvc": "1.0.1"
         },
         "runtime": {
           "WorkoutGenerator.dll": {}
@@ -2519,7 +2518,7 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "MongoDB.Bson/2.6.0": {
+      "MongoDB.Bson/2.6.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
           "System.Collections.NonGeneric": "4.3.0",
@@ -2534,10 +2533,10 @@
           "lib/netstandard1.5/MongoDB.Bson.dll": {}
         }
       },
-      "MongoDB.Driver/2.6.0": {
+      "MongoDB.Driver/2.6.1": {
         "dependencies": {
-          "MongoDB.Bson": "2.6.0",
-          "MongoDB.Driver.Core": "2.6.0",
+          "MongoDB.Bson": "2.6.1",
+          "MongoDB.Driver.Core": "2.6.1",
           "NETStandard.Library": "2.0.0",
           "System.ComponentModel.TypeConverter": "4.3.0",
           "System.Linq.Queryable": "4.0.1"
@@ -2549,10 +2548,10 @@
           "lib/netstandard1.5/MongoDB.Driver.dll": {}
         }
       },
-      "MongoDB.Driver.Core/2.6.0": {
+      "MongoDB.Driver.Core/2.6.1": {
         "dependencies": {
           "DnsClient": "1.0.7",
-          "MongoDB.Bson": "2.6.0",
+          "MongoDB.Bson": "2.6.1",
           "NETStandard.Library": "2.0.0",
           "System.Collections.Specialized": "4.3.0",
           "System.Diagnostics.TraceSource": "4.0.0",
@@ -2626,34 +2625,26 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
-      "PagedList/1.17.0": {
+      "PagedList.Core/1.17.4": {
         "runtime": {
-          "lib/net40/PagedList.dll": {}
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
         },
         "compile": {
-          "lib/net40/PagedList.dll": {}
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
         }
       },
-      "PagedList.Mvc/4.5.0": {
+      "PagedList.Core.Mvc/1.0.1": {
         "dependencies": {
-          "PagedList": "1.17.0"
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.4",
+          "Microsoft.AspNetCore.Razor.Runtime": "2.0.3",
+          "NETStandard.Library": "2.0.0",
+          "PagedList.Core": "1.17.4"
         },
         "runtime": {
-          "lib/net40/PagedList.Mvc.dll": {}
+          "lib/netstandard1.6/PagedList.Core.Mvc.dll": {}
         },
         "compile": {
-          "lib/net40/PagedList.Mvc.dll": {}
-        }
-      },
-      "Pioneer.Pagination/2.1.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Razor.Runtime": "2.0.3"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Pioneer.Pagination.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Pioneer.Pagination.dll": {}
+          "lib/netstandard1.6/PagedList.Core.Mvc.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -5773,26 +5764,26 @@
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
     },
-    "MongoDB.Bson/2.6.0": {
+    "MongoDB.Bson/2.6.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-r1+TPncS+vJTXH7c53YeKJ9iwZGL3VQxZhCNbqOvWr2bqYMVNaPVuwudi8iO25KMSqRF6p3r26Tad+ORwL13KA==",
-      "path": "mongodb.bson/2.6.0",
-      "hashPath": "mongodb.bson.2.6.0.nupkg.sha512"
+      "sha512": "sha512-pKSE9nG9OZX2uPjSI/AGWLGtOVINNiUbLpJYtFN/0oxWams0KbXOW6tFXAoL1iXuWUR3RxSz8u4DIhueCSm/Jg==",
+      "path": "mongodb.bson/2.6.1",
+      "hashPath": "mongodb.bson.2.6.1.nupkg.sha512"
     },
-    "MongoDB.Driver/2.6.0": {
+    "MongoDB.Driver/2.6.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Xan8v/nscmrb4qcpzOFDguc8ZGxSZSAOFCqH/Mg2Jeu6l9P9QmG6mqIjWyay3IbRmoe9fNvSgSoYDTAP8IQzAw==",
-      "path": "mongodb.driver/2.6.0",
-      "hashPath": "mongodb.driver.2.6.0.nupkg.sha512"
+      "sha512": "sha512-GwEKCHKjmgcsinLiLs7q54YoS4n03e+Ax/21j4PvppTYQAIpPusX/qdaU/gvZbpH97k/LmSGBN/5cdxN6mvFGw==",
+      "path": "mongodb.driver/2.6.1",
+      "hashPath": "mongodb.driver.2.6.1.nupkg.sha512"
     },
-    "MongoDB.Driver.Core/2.6.0": {
+    "MongoDB.Driver.Core/2.6.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TGSRAD8kiyh7QlkY4WYi6o8xYKmIpsJlZh5I8faVNJc1E+hUbDnJILIOtG41P9MAJl9bxUH7XRUcEoGog9/CVg==",
-      "path": "mongodb.driver.core/2.6.0",
-      "hashPath": "mongodb.driver.core.2.6.0.nupkg.sha512"
+      "sha512": "sha512-lBjITp66o0OX5PHp5INxYTOz7RZa2GCPpKXUYZMo+1Cxy8TtIDiba6PmP6XB5KO+Zw/8AeofSh4ofj1uHxXuqQ==",
+      "path": "mongodb.driver.core/2.6.1",
+      "hashPath": "mongodb.driver.core.2.6.1.nupkg.sha512"
     },
     "Newtonsoft.Json/10.0.1": {
       "type": "package",
@@ -5815,26 +5806,19 @@
       "path": "nuget.frameworks/4.0.0",
       "hashPath": "nuget.frameworks.4.0.0.nupkg.sha512"
     },
-    "PagedList/1.17.0": {
+    "PagedList.Core/1.17.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
-      "path": "pagedlist/1.17.0",
-      "hashPath": "pagedlist.1.17.0.nupkg.sha512"
+      "sha512": "sha512-Me111vdmlPp4GGeHqvNlnv4Raq1f1F77fDsJebuKsHCZXG4v4kMDzd5h1YVDv/Q7q9DuVgueR9mxp7eO7Yj4LA==",
+      "path": "pagedlist.core/1.17.4",
+      "hashPath": "pagedlist.core.1.17.4.nupkg.sha512"
     },
-    "PagedList.Mvc/4.5.0": {
+    "PagedList.Core.Mvc/1.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D0M4qW2g4a9cwG8ozIKUnJheCrm5GpFTceqUl63AXWaAVnTgk+TysZYUOGMsBRuzid8aF+/E8b0bXM6+90jiEw==",
-      "path": "pagedlist.mvc/4.5.0",
-      "hashPath": "pagedlist.mvc.4.5.0.nupkg.sha512"
-    },
-    "Pioneer.Pagination/2.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xzbpYXxPI4PjFfMK27v//QuhbJe/nqP0huiiOHTSvAOmCAxYbw2wJMOy5VbIj9BhRxc3j0yvZFPhaI15m785Fw==",
-      "path": "pioneer.pagination/2.1.0",
-      "hashPath": "pioneer.pagination.2.1.0.nupkg.sha512"
+      "sha512": "sha512-CQIjzt5xPtWZdNgHRs0j5vupwzYGxzQWsaa0XzzzYkV1Kz5UndJ/fT9Z/Ln16ARN3RjRPDqv3/s5if7UJ/dWnA==",
+      "path": "pagedlist.core.mvc/1.0.1",
+      "hashPath": "pagedlist.core.mvc.1.0.1.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",

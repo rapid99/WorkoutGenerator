@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using WorkoutGenerator.Models;
-using PagedList;
+using PagedList.Core;
 
 namespace WorkoutGenerator.Controllers
 {
@@ -25,13 +25,34 @@ namespace WorkoutGenerator.Controllers
             return _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).ToList();
         }
 
+        public void UpdateWeightTraining()
+        {
+            var db = GetDatabase();
+
+            foreach (var e in db)
+            {
+                if (e.Is_Weight_Training == true)
+                {
+                    ViewBag.Is_Weight_Training = "Yes";
+                }
+                else
+                {
+                    ViewBag.Is_Weight_Training = "No";
+                }
+            }
+        }
+
         public IActionResult Index(string search)
         {
             var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Title).ToEnumerable();
 
+            UpdateWeightTraining();
+
             if (!String.IsNullOrEmpty(search))
             {
-                exercises = exercises.Where(a => a.Title.ToUpper().Contains(search.ToUpper()) || a.Type.ToUpper().Contains(search.ToUpper()) || a.Reps.ToUpper().Contains(search.ToUpper()) || a.Weight.ToUpper().Contains(search.ToUpper()));
+                search = search.ToUpper();
+
+                exercises = exercises.Where(a => a.Title.ToUpper().Contains(search) || a.Type.ToUpper().Contains(search) || a.Reps.ToUpper().Contains(search) || a.Weight.ToUpper().Contains(search));
             }
 
             return View("Index", exercises.ToList());
@@ -39,7 +60,7 @@ namespace WorkoutGenerator.Controllers
 
         public IActionResult SortByType(string search)
         {
-            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Type).Limit(7).ToEnumerable();
+            var exercises = _database.GetCollection<Exercise>("Exercises").Find(FilterDefinition<Exercise>.Empty).SortBy(x => x.Type).ToEnumerable();
 
             if (!String.IsNullOrEmpty(search))
             {
@@ -89,6 +110,8 @@ namespace WorkoutGenerator.Controllers
             if (exercise_to_edit == null)
                 return NotFound();
 
+            UpdateWeightTraining();
+
             return View(exercise_to_edit);
 
         }
@@ -104,6 +127,7 @@ namespace WorkoutGenerator.Controllers
                 updater = updater.Set("Reps", model.Reps);
                 updater = updater.Set("Weight", model.Weight);
                 updater = updater.Set("Type", model.Type);
+                updater = updater.Set("Is_Weight_Training", model.Is_Weight_Training);
 
                 var result = _database.GetCollection<Exercise>("Exercises").UpdateOne(filter, updater);
 
@@ -128,6 +152,8 @@ namespace WorkoutGenerator.Controllers
 
             if (exercise_to_delete == null)
                 return NotFound();
+
+            UpdateWeightTraining();
 
             return View(exercise_to_delete);
         }

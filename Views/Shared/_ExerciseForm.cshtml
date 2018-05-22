@@ -28,3 +28,8 @@
     @Html.LabelFor(e => e.Type, null, new { @for = "newExerciseType" })
     @Html.ValidationMessageFor(e => e.Type, null, new { @style = "color:red;" })
 </div>
+
+<div class="md-form">
+    @Html.CheckBoxFor(e => e.Is_Weight_Training, new { @id = "newIsWeightTraining", @class = "form-control form-check-input" })
+    @Html.LabelFor(e => e.Is_Weight_Training, null, new { @for = "newIsWeightTraining" })
+</div>
